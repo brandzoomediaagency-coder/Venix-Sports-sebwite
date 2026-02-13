@@ -65,11 +65,13 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
+            /* Reduced for mobile */
         }
 
         section {
-            padding: 80px 0;
+            padding: 60px 0;
+            /* Reduced uniform padding */
         }
 
         .btn {
@@ -265,11 +267,12 @@
                 left: 0;
                 width: 100%;
                 background: white;
-                padding: 40px 20px;
+                padding: 30px 20px;
                 box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
-                gap: 20px;
+                gap: 15px;
                 text-align: center;
                 border-top: 1px solid #eee;
+                z-index: 2000;
             }
 
             .nav-links.active {
@@ -283,22 +286,25 @@
             .hero-btns {
                 flex-direction: column;
                 width: 100%;
+                gap: 15px;
             }
 
             .btn {
                 width: 100%;
+                padding: 12px 20px;
             }
 
             section {
-                padding: 60px 0;
+                padding: 40px 0;
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
+                /* Smaller for mobile */
             }
 
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
 
             .about {
@@ -306,15 +312,32 @@
             }
 
             .about img {
-                margin-top: 30px;
+                margin-top: 20px;
+            }
+
+            /* Fix min-width issues */
+            div[style*="min-width: 300px"] {
+                min-width: 100% !important;
             }
 
             .bulk-calculator {
-                padding: 25px !important;
+                padding: 20px !important;
             }
 
             #contact-form {
                 grid-template-columns: 1fr !important;
+                gap: 15px;
+            }
+
+            #masonry-gallery {
+                grid-template-columns: 1fr 1fr !important;
+                /* 2 columns on small mobile */
+                gap: 10px !important;
+            }
+
+            #masonry-gallery div {
+                height: 180px !important;
+                /* Smaller items */
             }
         }
 
@@ -389,7 +412,7 @@
 
     <section class="usps" style="background: var(--white); box-shadow: var(--shadow);">
         <div class="container"
-            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center;">
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; text-align: center;">
             <div class="usp-item" data-aos="fade-up">
                 <i class="fas fa-industry" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 20px;"></i>
                 <h3 style="margin-bottom: 10px;">Factory Direct</h3>
@@ -438,13 +461,13 @@
                         </div>
                     </div>
                 </div>
-                <div style="flex: 1; min-width: 300px; position: relative;" data-aos="fade-left">
+                <div style="flex: 1; width: 100%; position: relative;" data-aos="fade-left">
                     <img src="IMG-20260206-WA0013.jpg.jpeg" alt="Manufacturing Facility"
                         style="width: 100%; border-radius: 12px; box-shadow: var(--shadow);">
                     <div
-                        style="position: absolute; bottom: -20px; left: -20px; background: var(--primary); color: white; padding: 20px; border-radius: 8px; box-shadow: var(--shadow);">
-                        <span style="font-size: 2rem; font-weight: 800; display: block;">100%</span>
-                        <span>Made in India</span>
+                        style="position: absolute; bottom: 10px; left: 10px; background: var(--primary); color: white; padding: 15px; border-radius: 8px; box-shadow: var(--shadow);">
+                        <span style="font-size: 1.5rem; font-weight: 800; display: block;">100%</span>
+                        <span style="font-size: 0.8rem;">Made in India</span>
                     </div>
                 </div>
             </div>
@@ -459,7 +482,7 @@
                     in Regular and Premium ranges to suit every budget.</p>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                 <!-- Product 1 -->
                 <div class="product-card"
                     style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: var(--transition);"
