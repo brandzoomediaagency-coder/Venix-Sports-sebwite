@@ -255,9 +255,25 @@
             transform: scale(1.1);
         }
 
+
         @media (max-width: 992px) {
             .nav-links {
                 display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 40px 20px;
+                box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
+                gap: 20px;
+                text-align: center;
+                border-top: 1px solid #eee;
+            }
+
+            .nav-links.active {
+                display: flex;
             }
 
             .mobile-toggle {
@@ -266,7 +282,68 @@
 
             .hero-btns {
                 flex-direction: column;
+                width: 100%;
             }
+
+            .btn {
+                width: 100%;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about {
+                text-align: center;
+            }
+
+            .about img {
+                margin-top: 30px;
+            }
+
+            .bulk-calculator {
+                padding: 25px !important;
+            }
+
+            #contact-form {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* Improved Navigation Animation */
+        .nav-links a {
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Touch-friendly improvements */
+        input,
+        select,
+        textarea {
+            font-size: 16px !important;
+            /* Prevents iOS zoom on focus */
         }
     </style>
 </head>
@@ -767,27 +844,15 @@
         const mobileToggle = document.querySelector('.mobile-toggle');
         const navLinks = document.querySelector('.nav-links');
 
-        if (mobileToggle && navLinks) { // Check if elements exist before adding event listeners
+        if (mobileToggle && navLinks) {
             mobileToggle.addEventListener('click', () => {
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-                if (navLinks.style.display === 'flex') {
-                    navLinks.style.flexDirection = 'column';
-                    navLinks.style.position = 'absolute';
-                    navLinks.style.top = '70px';
-                    navLinks.style.left = '0';
-                    navLinks.style.width = '100%';
-                    navLinks.style.background = 'white';
-                    navLinks.style.padding = '20px';
-                    navLinks.style.boxShadow = '0 10px 10px rgba(0,0,0,0.1)';
-                }
+                navLinks.classList.toggle('active');
             });
 
             // Close mobile menu on link click
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', () => {
-                    if (window.innerWidth <= 992) {
-                        navLinks.style.display = 'none';
-                    }
+                    navLinks.classList.remove('active');
                 });
             });
         }
